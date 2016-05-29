@@ -3,7 +3,7 @@ describe('Guess Game Test', function () {
     var game;
 
     beforeEach(function () {
-        game = new Game(4);
+        game = new Game(4, 6);
 
         spyOn(game, 'generateRandomNumber').and.returnValue('1234');
         spyOn(console, 'log');
@@ -23,24 +23,24 @@ describe('Guess Game Test', function () {
     });
 
     it('Should return true when validate a normal number', function () {
-        expect(game.randomNumberIsValid('1234')).toBeTruthy();
+        expect(game.isValidNumber('1234')).toBeTruthy();
     });
 
     it('Should return false when validate a number that have same digit', function () {
-        expect(game.randomNumberIsValid('1224')).toBeFalsy();
+        expect(game.isValidNumber('1224')).toBeFalsy();
     });
 
     it('Should return false when validate a number which length is not equal to 4', function () {
-        expect(game.randomNumberIsValid('224')).toBeFalsy();
-        expect(game.randomNumberIsValid('22434')).toBeFalsy();
+        expect(game.isValidNumber('224')).toBeFalsy();
+        expect(game.isValidNumber('22434')).toBeFalsy();
     });
 
     it('Should return false when validate a number that contain character', function () {
-        expect(game.randomNumberIsValid('224e')).toBeFalsy();
+        expect(game.isValidNumber('224e')).toBeFalsy();
     });
 
     it('Should return false when validate a number which first digit is zero', function () {
-        expect(game.randomNumberIsValid('0224')).toBeFalsy();
+        expect(game.isValidNumber('0224')).toBeFalsy();
     });
 
     it('Should return true and 4A4B when random number is 1234 and guess number is 1234', function () {
@@ -82,7 +82,6 @@ describe('Guess Game Test', function () {
 
         expect(console.log).toHaveBeenCalledWith('0A3B');
         expect(console.log).toHaveBeenCalledWith('Congratulation!');
-        expect(console.log).toHaveBeenCalledTimes(2);
     });
 
     it('Should log Congratulation when guess success on sixth times and random number is 1234', function () {
@@ -90,7 +89,6 @@ describe('Guess Game Test', function () {
 
         game.run();
 
-        expect(console.log).toHaveBeenCalledTimes(6);
         expect(console.log).toHaveBeenCalledWith('Congratulation!');
     });
 
@@ -100,7 +98,14 @@ describe('Guess Game Test', function () {
         game.run();
 
         expect(console.log).toHaveBeenCalledWith('Game Over!');
-        expect(console.log).toHaveBeenCalledTimes(7);
+    });
+
+    it('Should return 5 when guess success first time and get remain game chane', function () {
+        spyOn(game, 'getUserInputNumber').and.returnValues('1234');
+
+        game.run();
+
+        expect(game.gameTimes).toBe(5);
     });
 
 });
