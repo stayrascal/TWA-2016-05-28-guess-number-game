@@ -1,0 +1,23 @@
+{
+  "name": "guess-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jasmine": "^2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stayrascal/TWA-2016-05-28-guess-number-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stayrascal/TWA-2016-05-28-guess-number-game/issues"
+  },
+  "homepage": "https://github.com/stayrascal/TWA-2016-05-28-guess-number-game#readme"
+}
