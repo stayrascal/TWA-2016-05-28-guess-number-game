@@ -11,7 +11,7 @@
     "readline-sync": "^1.4.2"
   },
   "scripts": {
-    "test": "jasmine"
+    "test": "./node_module/.bin/jasmine"
   },
   "repository": {
     "type": "git",
