@@ -6,7 +6,10 @@
   "dependencies": {
     "jasmine": "^2.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "readline-sync": "^1.4.2"
+  },
   "scripts": {
     "test": "jasmine"
   },
